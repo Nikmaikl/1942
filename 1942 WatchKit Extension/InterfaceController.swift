@@ -31,14 +31,19 @@ class InterfaceController: WKInterfaceController {
     var bulletShouldLeadPlayer = true
     
     var score = 0
-    var lives = 5
+    let maxLives = 5
+    var lives = 0
     var enemyInsetLeft = 0
     var playerInsetLeft = 0
     
-    let defaults = NSUserDefaults()
+    var respawnEnemiesTimer: NSTimer!
+    var fireTimer: NSTimer!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        
+        lives = maxLives
+        resetStats()
         
         var items = [WKPickerItem]()
         
@@ -50,9 +55,8 @@ class InterfaceController: WKInterfaceController {
         
         self.bulletGroup.setAlpha(0.0)
         
-        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "respawnEnemies", userInfo: nil, repeats: true)
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "fire", userInfo: nil, repeats: true)
-        
+        respawnEnemiesTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "respawnEnemies", userInfo: nil, repeats: true)
+        fireTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "fire", userInfo: nil, repeats: true)
         respawnEnemies()
     }
     
@@ -106,6 +110,7 @@ class InterfaceController: WKInterfaceController {
         self.bulletGroup.setVerticalAlignment(.Bottom)
         self.bulletGroup.setAlpha(1.0)
         if (playerInsetLeft >= enemyInsetLeft-15) && (playerInsetLeft <= enemyInsetLeft+15){
+            WKInterfaceDevice.currentDevice().playHaptic(.Click)
             score += 1
             scoreLabel.setText("\(score)")
         }
@@ -137,11 +142,20 @@ class InterfaceController: WKInterfaceController {
     
     override func willActivate() {
         super.willActivate()
+        resetStats()
     }
 
     override func didDeactivate() {
         super.didDeactivate()
         saveBestScore()
+        respawnEnemiesTimer.invalidate()
+        fireTimer.invalidate()
+    }
+    
+    func resetStats() {
+        score = 0
+        lives = maxLives
+        livesLabel.setText("\(lives)")
     }
     
     func saveBestScore() {

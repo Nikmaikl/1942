@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
-        <!--Menu Interface Controller-->
+        <!--Main_menu-->
         <scene sceneID="Kys-RC-5iq">
             <objects>
-                <controller id="CdN-QX-ABj" customClass="MenuInterfaceController" customModule="_942_WatchKit_Extension">
+                <controller identifier="Main_menu" id="CdN-QX-ABj" customClass="MenuInterfaceController" customModule="_942_WatchKit_Extension">
                     <items>
                         <group width="1" height="8" alignment="left" id="GZ6-Xo-MDa"/>
                         <imageView alignment="center" image="logo" contentMode="scaleAspectFit" id="qjD-MC-loU"/>
@@ -35,7 +35,7 @@
                             <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="0.0"/>
                         </group>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Play" id="zYa-FQ-pag">
-                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="AgC-eL-Hgc" kind="push" id="UDv-wo-HxZ"/>
@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="14" y="363"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Game_screen-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="_942_WatchKit_App" customModuleProvider="target">
+                <controller identifier="Game_screen" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="_942_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" spacing="0.0" id="aZx-2H-B2I">
                             <items>
@@ -139,6 +139,8 @@
                                     <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
                                 </label>
                                 <button width="1" alignment="left" verticalAlignment="bottom" title="Menu" id="cnb-cq-CvY">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <segue destination="CdN-QX-ABj" kind="push" id="aAK-xx-Ghk"/>
                                     </connections>
