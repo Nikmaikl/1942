@@ -20,6 +20,9 @@
 		4C14DEF91C8C5C33005D867C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14DEF81C8C5C33005D867C /* ExtensionDelegate.swift */; };
 		4C14DEFB1C8C5C33005D867C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14DEFA1C8C5C33005D867C /* NotificationController.swift */; };
 		4C14DEFD1C8C5C33005D867C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C14DEFC1C8C5C33005D867C /* Assets.xcassets */; };
+		4C244B661C9EFBB20056B123 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C244B651C9EFBB20056B123 /* Entity.swift */; };
+		4C244B681C9EFCBB0056B123 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C244B671C9EFCBB0056B123 /* Player.swift */; };
+		4C244B6A1C9F38340056B123 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C244B691C9F38340056B123 /* Enemy.swift */; };
 		4CA49A8D1C95AEAD0050AB1D /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA49A8C1C95AEAD0050AB1D /* MenuInterfaceController.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +87,9 @@
 		4C14DEFA1C8C5C33005D867C /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		4C14DEFC1C8C5C33005D867C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C14DEFE1C8C5C33005D867C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C244B651C9EFBB20056B123 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		4C244B671C9EFCBB0056B123 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4C244B691C9F38340056B123 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		4CA49A8C1C95AEAD0050AB1D /* MenuInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +157,7 @@
 		4C14DEF31C8C5C33005D867C /* 1942 WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4C244B641C9EA25C0056B123 /* Entities */,
 				4C14DEF61C8C5C33005D867C /* InterfaceController.swift */,
 				4CA49A8C1C95AEAD0050AB1D /* MenuInterfaceController.swift */,
 				4C14DEF81C8C5C33005D867C /* ExtensionDelegate.swift */,
@@ -168,6 +175,16 @@
 				4C14DEF51C8C5C33005D867C /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C244B641C9EA25C0056B123 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4C244B651C9EFBB20056B123 /* Entity.swift */,
+				4C244B671C9EFCBB0056B123 /* Player.swift */,
+				4C244B691C9F38340056B123 /* Enemy.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,9 +331,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C244B6A1C9F38340056B123 /* Enemy.swift in Sources */,
 				4C14DEFB1C8C5C33005D867C /* NotificationController.swift in Sources */,
+				4C244B661C9EFBB20056B123 /* Entity.swift in Sources */,
 				4C14DEF91C8C5C33005D867C /* ExtensionDelegate.swift in Sources */,
 				4CA49A8D1C95AEAD0050AB1D /* MenuInterfaceController.swift in Sources */,
+				4C244B681C9EFCBB0056B123 /* Player.swift in Sources */,
 				4C14DEF71C8C5C33005D867C /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

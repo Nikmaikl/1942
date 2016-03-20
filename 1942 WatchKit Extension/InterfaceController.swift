@@ -28,21 +28,20 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var scoreLabel: WKInterfaceLabel!
     @IBOutlet var livesLabel: WKInterfaceLabel!
     
-    var bulletShouldLeadPlayer = true
-    
     var score = 0
-    let maxLives = 5
-    var lives = 0
-    var enemyInsetLeft = 0
+
     var playerInsetLeft = 0
     
     var respawnEnemiesTimer: NSTimer!
     var fireTimer: NSTimer!
     
+    let player = Player()
+    let enemy = Enemy()
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        lives = maxLives
+        player.lives = player.maxLives
         resetStats()
         
         var items = [WKPickerItem]()
@@ -69,11 +68,9 @@ class InterfaceController: WKInterfaceController {
             self.playerGroup.sizeToFitWidth()
             self.playerGroup.sizeToFitWidth()
             
-            if self.bulletShouldLeadPlayer {
-                self.bulletGroup.setContentInset(UIEdgeInsets(top: 0, left: CGFloat(value+14), bottom: 0, right: 0))
-                self.bulletGroup.sizeToFitWidth()
-                self.bulletGroup.sizeToFitWidth()
-            }
+            self.bulletGroup.setContentInset(UIEdgeInsets(top: 0, left: CGFloat(value+14), bottom: 0, right: 0))
+            self.bulletGroup.sizeToFitWidth()
+            self.bulletGroup.sizeToFitWidth()
         })
         
         movingTimes += 1
@@ -92,9 +89,11 @@ class InterfaceController: WKInterfaceController {
     
     func respawnEnemies() {
         self.enemyGroup.setVerticalAlignment(.Top)
-        enemyInsetLeft = Int(arc4random_uniform(100))
+        enemy.leftInset = Int(arc4random_uniform(100))
+        enemyImage.stopAnimating()
+        enemyImage.setImageNamed("enemy")
         
-        self.enemyGroup.setContentInset(UIEdgeInsets(top: 0, left: CGFloat(enemyInsetLeft), bottom: 0, right: 0))
+        self.enemyGroup.setContentInset(UIEdgeInsets(top: 0, left: CGFloat(enemy.leftInset), bottom: 0, right: 0))
         self.enemyGroup.sizeToFitWidth()
         self.enemyGroup.sizeToFitWidth()
         self.enemyGroup.setAlpha(1.0)
@@ -109,10 +108,12 @@ class InterfaceController: WKInterfaceController {
     func fire() {
         self.bulletGroup.setVerticalAlignment(.Bottom)
         self.bulletGroup.setAlpha(1.0)
-        if (playerInsetLeft >= enemyInsetLeft-15) && (playerInsetLeft <= enemyInsetLeft+15){
+        if (playerInsetLeft >= enemy.leftInset-15) && (playerInsetLeft <= enemy.leftInset+15){
             WKInterfaceDevice.currentDevice().playHaptic(.Click)
             score += 1
             scoreLabel.setText("\(score)")
+//            enemyImage.setImageNamed("fire")
+//            enemyImage.startAnimatingWithImagesInRange(NSMakeRange(0, 5), duration: 0.5, repeatCount: 1)
         }
         
         self.animateWithDuration(0.7, animations: {
@@ -123,12 +124,12 @@ class InterfaceController: WKInterfaceController {
 
     func enemyFire() {
         self.enemyBulletGroup.setVerticalAlignment(.Top)
-        self.enemyBulletGroup.setContentInset(UIEdgeInsets(top: 0, left: CGFloat(enemyInsetLeft+14), bottom: 0, right: 0))
+        self.enemyBulletGroup.setContentInset(UIEdgeInsets(top: 0, left: CGFloat(enemy.leftInset+14), bottom: 0, right: 0))
         self.enemyBulletGroup.setAlpha(1.0)
-        if (playerInsetLeft >= enemyInsetLeft-10) && (playerInsetLeft <= enemyInsetLeft+10){
-            lives -= 1
-            livesLabel.setText("\(lives)")
-            if lives == 0 {
+        if (playerInsetLeft >= enemy.leftInset-10) && (playerInsetLeft <= enemy.leftInset+10){
+            player.lives -= 1
+            livesLabel.setText("\(player.lives)")
+            if player.lives == 0 {
                 saveBestScore()
                 pushControllerWithName("Game_over", context: nil)
             }
@@ -154,8 +155,8 @@ class InterfaceController: WKInterfaceController {
     
     func resetStats() {
         score = 0
-        lives = maxLives
-        livesLabel.setText("\(lives)")
+        player.lives = player.maxLives
+        livesLabel.setText("\(player.lives)")
     }
     
     func saveBestScore() {

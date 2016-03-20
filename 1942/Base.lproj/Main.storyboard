@@ -16,11 +16,42 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bezel_38mm" translatesAutoresizingMaskIntoConstraints="NO" id="wOR-Dd-Ad8">
+                                <rect key="frame" x="193" y="177" width="214" height="246"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="QGD-gg-lhq"/>
+                                    <constraint firstAttribute="height" constant="246" id="Xt2-01-HmU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to the Watch app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgR-cp-uWY">
+                                <rect key="frame" x="213" y="431" width="174" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="efR-c7-TIc">
+                                <rect key="frame" x="211" y="124" width="179" height="45"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.40392156862745099" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="efR-c7-TIc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Rf-bP-4za"/>
+                            <constraint firstItem="mgR-cp-uWY" firstAttribute="top" secondItem="wOR-Dd-Ad8" secondAttribute="bottom" constant="8" id="7kO-Oz-yJy"/>
+                            <constraint firstItem="wOR-Dd-Ad8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EM3-p4-7o4"/>
+                            <constraint firstItem="wOR-Dd-Ad8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LxY-hW-0UD"/>
+                            <constraint firstItem="wOR-Dd-Ad8" firstAttribute="top" secondItem="efR-c7-TIc" secondAttribute="bottom" constant="8" id="bcP-Mr-KeB"/>
+                            <constraint firstItem="mgR-cp-uWY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSa-nW-Fcs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="385" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Bezel_38mm" width="472" height="540"/>
+        <image name="logo" width="179" height="45"/>
+    </resources>
 </document>

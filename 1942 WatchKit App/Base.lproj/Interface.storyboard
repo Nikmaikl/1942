@@ -59,11 +59,15 @@
                             <items>
                                 <group width="1" alignment="right" id="hw6-NA-8TW">
                                     <items>
-                                        <label alignment="left" text="Lives " id="nF6-LR-KoP"/>
+                                        <label alignment="left" text="Lives " id="nF6-LR-KoP">
+                                            <color key="textColor" red="0.37254901960784315" green="0.38431372549019605" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
                                         <label alignment="left" verticalAlignment="center" text="5" id="TiI-tj-CQs"/>
                                         <group alignment="right" id="YwR-lu-Ye8">
                                             <items>
-                                                <label alignment="left" text="Score " id="CPo-Qe-ccx"/>
+                                                <label alignment="left" text="Score " id="CPo-Qe-ccx">
+                                                    <color key="textColor" red="0.37254901960784315" green="0.38431372549019605" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
                                                 <label alignment="right" verticalAlignment="center" text="0" id="YWr-2L-vuu"/>
                                             </items>
                                         </group>

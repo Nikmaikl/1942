@@ -19,12 +19,12 @@ class MenuInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
 
-
         // Configure interface objects here.
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        
         if let bestScore = userDefaults.objectForKey("best_score") as? Int {
             scoreLabel.setText("\(bestScore)")
             
@@ -32,8 +32,6 @@ class MenuInterfaceController: WKInterfaceController {
             print(level)
             levelLabel.setText("\(level)")
         }
-        
-
         
         super.willActivate()
     }
