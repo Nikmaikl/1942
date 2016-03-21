@@ -24,16 +24,15 @@ class MenuInterfaceController: WKInterfaceController {
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        
+        super.willActivate()
         if let bestScore = userDefaults.objectForKey("best_score") as? Int {
             scoreLabel.setText("\(bestScore)")
             
             let level = bestScore / 20 + 1
-            print(level)
             levelLabel.setText("\(level)")
+        } else {
+            userDefaults.setInteger(0, forKey: "best_score")
         }
-        
-        super.willActivate()
     }
 
     override func didDeactivate() {
